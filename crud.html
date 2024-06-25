@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-image: url("https://tse4.mm.bing.net/th?id=OIP.g-vf8P3q1YtfpxC83nB4CQHaEO&pid=Api&P=0&h=180");
+        background-size: 400% 400%;
+    }
+    .form-container {
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
+    }
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 1.5rem;
+    }
+    .form-container label {
+        font-weight: bold;
+        color: #333;
+        font-size: 0.9rem;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="tel"],
+    .form-container input[type="password"],
+    .form-container select,
+    .form-container input[type="submit"] {
+        width: 100%;
+        padding: 8px;
+        margin: 5px 0 15px;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        font-size: 0.9rem;
+        transition: box-shadow 0.3s ease;
+    }
+    .form-container input[type="text"]:focus,
+    .form-container input[type="email"]:focus,
+    .form-container input[type="tel"]:focus,
+    .form-container input[type="password"]:focus,
+    .form-container select:focus,
+    .form-container input[type="submit"]:focus {
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        outline: none;
+    }
+    .form-container input[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+    .form-container input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    .form-container p {
+        text-align: center;
+        margin-top: 10px;
+        color: #333;
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const phoneInput = document.getElementById("phone");
+        const passwordInput = document.getElementById("password");
+        const form = document.querySelector("form");
+        
+        form.addEventListener("submit", function (event) {
+            if (nameInput.value.trim() === "" ||
+                emailInput.value.trim() === "" ||
+                phoneInput.value.trim() === "" ||
+                passwordInput.value.trim() === "") {
+                event.preventDefault();
+                alert("Please fill in all fields.");
+            }
+        });
+    });
+</script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Form Validation</h2>
+        <form action="/insert" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="motherTongue">Mother Tongue:</label>
+            <input type="text" id="motherTongue" name="motherTongue" required>
+
+            <input type="submit" value="Submit">
+        </form>
+        <p>Already submitted? <a href="/report">View Report</a></p>
+    </div>
+</body>
+</html>
+
+
